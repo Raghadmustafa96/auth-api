@@ -23,5 +23,5 @@ npm test for testing
 
 # UML diagram 
 
-![diagram ]()
+![diagram ](./lab8.PNG)
 
