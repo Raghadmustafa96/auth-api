@@ -7,27 +7,12 @@ const { server } = require('../../../src/server.js');
 const request = supergoose(server);
 
 let id;
-let SECRET = process.env.SECRET || 'supersecret';
-let users = {
-  admin: { username: 'admin', password: 'password', role: 'admin' },
-  editor: { username: 'editor', password: 'password', role: 'editor' },
-  user: { username: 'user', password: 'password', role: 'user' },
-};
-
-beforeAll(async (done) => {
-  await new Users(users.admin).save();
-  done();
-});
-
-const user = { username: 'admin' };
-const token = jwt.sign(user, SECRET);
-
-const basic = { username: 'basic' };
-const basicToken = jwt.sign(basic, SECRET);
+let SECRET = process.env.SECRET;
+const token = jwt.sign({ username: 'admin' }, SECRET);
 
 describe('clothes', () => {
-
   it('POST /clothes', async () => {
+         await new Users({ username: 'admin', password: '123', role: 'admin' }).save();
         const response = await request.post('/api/v2/clothes').send({
             name: 'dress',
             color: 'green',
