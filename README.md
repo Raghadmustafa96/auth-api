@@ -11,6 +11,11 @@ Install
 * Clone the repository from GitHub
 * npm init -y
 * install dependencies npm i express dotenv cors base-64 bcrypt mongoose jest @codefellows/supergoose 
+* in .env file need :
+
+            SECRET=123456
+            PORT=5555
+            MONGODB_URI=mongodb://localhost:27017/auth
 
 Test
 Run the command npm test to test and verify the server and the middle wares are working.
